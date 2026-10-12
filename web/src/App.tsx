@@ -26,13 +26,13 @@ const COPY = {
   en: {
     title: 'About Lex',
     paragraphs: [
-      "I'm Lex — a creative technologist living where code meets art. I spend my days around coding, creativity, playful interaction & design, and CG work. I love studying and combining skills across different fields — to create, and to explore more possibilities.",
+      "I'm Lex — someone who believes creation is instinct. Imagination is my raw material, art gave me an eye for aesthetics, and vibe coding lets me turn ideas into deliverables by the shortest route. I stay excited at every first encounter with something new — here to create and explore more possibilities.",
     ],
   },
   zh: {
     title: 'About Lex',
     paragraphs: [
-      '我是 Lex——一个游走在代码与艺术之间的创意技术人。我常年和 Coding、创意、有趣的交互 & 设计、CG 创作等打交道，喜欢研究并组合不同领域的技能，来创造并探索更多可能性。',
+      '我是 Lex——一个相信创造是种本能的人。想象力是我的生产资料，艺术给了我审美的底色，而 vibe coding 让我用最短路径把想法变成可交付的东西。对新事物始终保持 první接触的兴奋，来创造并探索更多可能性。',
     ],
   },
 }
