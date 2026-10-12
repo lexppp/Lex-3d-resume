@@ -1531,3 +1531,7 @@ canvas {
     font-size: 11.5px;
   }
 }
+
+/* Keep Lex's white hero copy readable over the light blue shirt. */
+.about-title { text-shadow: 0 2px 24px rgba(15, 30, 40, 0.6); }
+.about-body { text-shadow: 0 1px 8px rgba(10, 25, 36, 0.95); }

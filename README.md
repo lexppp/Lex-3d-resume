@@ -1,4 +1,4 @@
-<h1 align="center">About Sen · 3D 个人简历</h1>
+<h1 align="center">Lex-3d-简历</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue.svg?style=flat" alt="License MIT"></a>
@@ -6,13 +6,13 @@
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript 5">
   <img src="https://img.shields.io/badge/three.js-r169-000000?style=flat&logo=three.js&logoColor=white" alt="three.js r169">
   <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite 5">
-  <a href="https://about.senbuzy.com/"><img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat" alt="Live Demo"></a>
+  <a href="https://lexppp.github.io/Lex-3d-resume/"><img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat" alt="Live Demo"></a>
 </p>
 
 <p align="center"><b>滚动就是运镜。把你的简历，长在一个 3D 场景里。</b></p>
 
 <p align="center">
-  <a href="https://about.senbuzy.com/">在线预览</a> |
+  <a href="https://lexppp.github.io/Lex-3d-resume/">在线预览</a> |
   <a href="#快速开始">快速开始</a> |
   <a href="#改成你自己的">改成你自己的</a> |
   <a href="#换人物模型">换模型</a> |
@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="https://about.senbuzy.com/"><img src="docs/preview.jpg" alt="3D 简历首屏：滚动驱动的人物模型 + 前景 About 文案" width="800"></a>
+  <a href="https://lexppp.github.io/Lex-3d-resume/"><img src="docs/preview.jpg" alt="3D 简历首屏：滚动驱动的人物模型 + 前景 About 文案" width="800"></a>
 </p>
 
 一个基于 **React Three Fiber + TypeScript** 的滚动式个人 3D 简历：一层固定的 3D 背景（会随滚动运镜的人物模型）+ 一层可滚动的 HTML 内容（About → 履历 → 作品集）。相机路径直接复用 glb 里烘好的动画，滚动条只是「刮」时间轴，再叠上自动对焦景深和眼球跟随光标。纯前端 SPA，`npm run build` 出来就是一个静态 `dist/`，扔哪都能跑。
@@ -83,7 +83,7 @@ npm run lint       # ESLint
 | 单个作品的详情正文 | `src/content/works/<slug>.md`（frontmatter + markdown；格式见 `src/data/workDocs.ts`，示例见 `src/content/works/example.md`） |
 | 履历条数 / 相机停靠点 | `src/data/focusPoints.ts` 的 `FOCUS_POINTS`（要与 `Resume.tsx` 的 entries 同步增删） |
 | 灯光 / 景深 / Bloom / 背景渐变 / 人物位置 | `src/scene/Scene.tsx` 里各组件顶部的**普通常量**，直接改值，没有面板也没有额外配置文件 |
-| 人物模型 | `public/models/me.glb`，见 [换人物模型](#换人物模型) |
+| 人物模型 | `public/models/lex.glb`，见 [换人物模型](#换人物模型) |
 
 作品详情用极简 markdown：每个作品一个 `.md`，通过 `works.ts` 里 item 的 `slug` 关联；没有对应 `.md` 的作品走统一占位详情。
 
@@ -96,7 +96,7 @@ npm run lint       # ESLint
 
 ## 换人物模型
 
-想换成你自己的人物，替换 `public/models/me.glb`（源文件是仓库根的 [`blender/sen.blend`](blender)，在 Blender 里改完导出 glb 覆盖它），或改写 `src/scene/Scene.tsx` 用你自己的场景。代码按**对象名字**在 glb 里查找以下内容，缺哪个对应功能就失效：
+想换成你自己的人物，替换 `public/models/lex.glb`（源文件是仓库根的 [`blender/sen.blend`](blender)，在 Blender 里改完导出 glb 覆盖它），或改写 `src/scene/Scene.tsx` 用你自己的场景。代码按**对象名字**在 glb 里查找以下内容，缺哪个对应功能就失效：
 
 | glb 里要有 | 作用 | 缺了会怎样 |
 | --- | --- | --- |
@@ -110,7 +110,7 @@ npm run lint       # ESLint
 
 纯前端 SPA，无后端、无路由：`index.html` → `src/main.tsx` → `src/App.tsx`（一个固定 `<Canvas>` 3D 背景 + 可滚动 HTML 叠层）。
 
-- **3D 背景**：`src/scene/Scene.tsx` 加载 `public/models/me.glb`，用 glb 自带的相机动画分 5 段被滚动「刮」着播放，再叠自动对焦景深与眼球跟随；灯光来自 `src/scene/Env.tsx`（`public/textures/env.hdr` 做 IBL）。
+- **3D 背景**：`src/scene/Scene.tsx` 加载 `public/models/lex.glb`，用 glb 自带的相机动画分 5 段被滚动「刮」着播放，再叠自动对焦景深与眼球跟随；灯光来自 `src/scene/Env.tsx`（`public/textures/env.hdr` 做 IBL）。
 - **滚动内容**：`Hero`（About，在 `App.tsx` 内）→ `src/ui/Resume.tsx`（履历时间轴）→ `src/ui/Works.tsx`（作品集画廊 + 详情弹窗）。
 - **叠层效果**：`LoadingScreen`（模型加载完前的遮罩）、`NoiseOverlay`（胶片噪点）、滚动渐暗 / 磨砂右轨 / 首屏装饰画框（都在 `App.tsx`）。
 - **后期管线**：`<EffectComposer>` 里顺序为 DepthOfField → Bloom → SMAA，换效果时注意顺序会影响合成。
@@ -221,3 +221,15 @@ React 18 · TypeScript · @react-three/fiber · @react-three/drei · @react-thre
 - **代码**：[MIT](LICENSE)。
 - **个人内容与素材**：© Sen Zheng（SEN），保留所有权利，**不在 MIT 范围内**，详见 [`NOTICE`](NOTICE)。fork 后请替换成你自己的姓名、模型、简历、作品与 logo。
 - **第三方素材**（字体 / HDR）：请各自核对其原始许可后再分发。
+
+## Lex 人物模型（2026-10-13）
+
+这是按照照片特征制作的风格化 3D 人物，包含黑色偏分头发、细框眼镜、衬衫领带和耳饰。模型在 Blender 中制作，10 张贴纸从透明的 16 宫格图集里随机选取，贴在额头和双颊；位置、角度和图案由固定随机种子记录，加载页面时不会闪动。
+
+- 网页模型：web/public/models/lex.glb
+- Blender 源文件：blender/lex.blend
+- 贴纸图集：blender/lex-stickers.png
+- 贴纸分布：blender/lex-sticker-layout.json
+- 重新生成：使用 Blender 4.5 运行 blender/create_lex.py，-- 后传入项目根目录。
+
+保留 CameraAction（24 fps）和 focus-0、focus-1…5、focus-works；独立 eye_Lex_* 对象支持眼球跟随。原始参考照片没有包含在网页资源中。其他履历和作品仍沿用模板占位内容，后续可替换。原作者版权声明保留在 LICENSE 和 NOTICE。

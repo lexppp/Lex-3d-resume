@@ -6,7 +6,7 @@ import * as THREE from 'three'
 import Env from './Env'
 import { FOCUS_POINTS, FRAMES_PER_NODE } from '../data/focusPoints'
 
-useGLTF.preload(`${import.meta.env.BASE_URL}models/me.glb`)
+useGLTF.preload(`${import.meta.env.BASE_URL}models/lex.glb`)
 
 // 聚焦锚点（glb 内 focus-* 空对象），顺序对应履历节点；名单是唯一真源，见 data/focusPoints.ts
 const POINTS = FOCUS_POINTS as readonly string[]
@@ -68,14 +68,14 @@ function GradientBackground() {
 // 所有光源（HDRI 环境 + 半球 + 主/补方向光）
 function Lights() {
   const c = {
-    envIntensity: 0.85,
-    hemiIntensity: 1.15,
+    envIntensity: 0.75,
+    hemiIntensity: 0.9,
     hemiSky: '#ffffff',
     hemiGround: '#404040',
-    keyIntensity: 2.35,
+    keyIntensity: 1.8,
     keyColor: '#ffd9c6',
     keyPos: [5, 8, 5] as [number, number, number],
-    fillIntensity: 2.25,
+    fillIntensity: 1.35,
     fillColor: '#9fc6ff',
     fillPos: [-5, 4, -4] as [number, number, number],
   }
@@ -135,18 +135,18 @@ function Man2({
 
   const eye = {
     enabled: true,
-    gain: 3,
-    maxYaw: 15,
-    maxPitch: 8,
+    gain: 1.4,
+    maxYaw: 10,
+    maxPitch: 7,
     invertX: false,
     invertY: false,
     smooth: 0.44,
-    crossEye: 45,
-    crossRadius: 0.25,
+    crossEye: 10,
+    crossRadius: 0.14,
   }
 
   const get = useThree((s) => s.get)
-  const { scene, animations } = useGLTF(`${import.meta.env.BASE_URL}models/me.glb`)
+  const { scene, animations } = useGLTF(`${import.meta.env.BASE_URL}models/lex.glb`)
 
   // 克隆模型；收集眼睛对象、聚焦锚点对象、glb 自带相机、各锚点景深开关
   const { model, eyes, points, startPoint, glbCam, focusNode, dof } = useMemo(() => {
@@ -158,7 +158,7 @@ function Man2({
     let focusNode: any = null
     clone.traverse((o: any) => {
       if (o.isMesh) {
-        o.castShadow = true
+        o.castShadow = !o.name.startsWith('decal_') && !o.name.includes('glasses_lens')
         o.receiveShadow = true
       }
       if (o.isCamera) glbCam = o
@@ -516,7 +516,7 @@ function Post2({
   dofRangeRef: MutableRefObject<number>
 }) {
   const post = {
-    bloomIntensity: 0.6,
+    bloomIntensity: 0.25,
     bloomThreshold: 0.82,
     dof: true,
     startBokeh: 7.4,

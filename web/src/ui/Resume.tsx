@@ -75,8 +75,7 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         place: 'Content Creator',
         groups: [
           {
-            heading: '小郑还挺忙',
-            logoImg: `${import.meta.env.BASE_URL}images/buzyzheng.png`,
+            heading: 'Lex',
             sub: 'tech-DIY creator',
             items: ['120K on Douyin · 87K on Bilibili · 23K on Xiaohongshu'],
             links: SOCIAL_LINKS,
@@ -125,8 +124,7 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         place: '自媒体博主',
         groups: [
           {
-            heading: '小郑还挺忙',
-            logoImg: `${import.meta.env.BASE_URL}images/buzyzheng.png`,
+            heading: 'Lex',
             sub: '科技 DIY 博主',
             items: ['抖音 12 万 · B站 8.7 万 · 小红书 2.3 万 关注'],
             links: SOCIAL_LINKS,
