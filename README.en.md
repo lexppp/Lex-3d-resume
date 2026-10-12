@@ -1,4 +1,4 @@
-<h1 align="center">About Sen · 3D Personal Résumé</h1>
+<h1 align="center">Lex · 3D Personal Résumé</h1>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue.svg?style=flat" alt="License MIT"></a>
@@ -6,13 +6,13 @@
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript 5">
   <img src="https://img.shields.io/badge/three.js-r169-000000?style=flat&logo=three.js&logoColor=white" alt="three.js r169">
   <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite 5">
-  <a href="https://about.senbuzy.com/"><img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat" alt="Live Demo"></a>
+  <a href="https://lexppp.github.io/Lex-3d-resume/"><img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat" alt="Live Demo"></a>
 </p>
 
 <p align="center"><b>Scrolling is the camera move. Your résumé, living inside a 3D scene.</b></p>
 
 <p align="center">
-  <a href="https://about.senbuzy.com/">Live Demo</a> |
+  <a href="https://lexppp.github.io/Lex-3d-resume/">Live Demo</a> |
   <a href="#quick-start">Quick Start</a> |
   <a href="#make-it-yours">Make It Yours</a> |
   <a href="#swapping-the-character-model">Swap the Model</a> |
@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="https://about.senbuzy.com/"><img src="docs/preview.jpg" alt="The 3D résumé hero: a scroll-driven character model behind the foreground About copy" width="800"></a>
+  <a href="https://lexppp.github.io/Lex-3d-resume/"><img src="docs/lex-preview.png" alt="The 3D résumé hero: a scroll-driven character model behind the foreground About copy" width="800"></a>
 </p>
 
 A scroll-driven personal 3D résumé built on **React Three Fiber + TypeScript**: one fixed 3D background (a character model that reacts to scroll) plus scrollable HTML content in front (About → résumé → works). The camera path is the animation baked into the glb — the scrollbar just wipes through its timeline — with auto-focus depth-of-field and eye-follows-cursor layered on top. It's a pure front-end SPA: `npm run build` gives you a static `dist/` that runs anywhere.
@@ -45,8 +45,8 @@ Even on the source route, intro3d doubles as a **visual glb exporter**: skip Ble
 The whole front-end app lives under [`web/`](web). **Every code / asset path below is relative to `web/`** (e.g. `src/App.tsx` means `web/src/App.tsx`), and npm commands run inside `web/`.
 
 ```bash
-git clone https://github.com/dayinji/sen-3d-resume.git
-cd sen-3d-resume/web
+git clone https://github.com/lexppp/Lex-3d-resume.git
+cd Lex-3d-resume/web
 npm install
 npm run dev        # dev at http://localhost:5173
 ```
@@ -83,7 +83,7 @@ Content and presentation are separated; changing content mostly means editing da
 | A single work's detail body | `src/content/works/<slug>.md` (frontmatter + markdown; format in `src/data/workDocs.ts`, example in `src/content/works/example.md`) |
 | Number of résumé entries / camera stops | `FOCUS_POINTS` in `src/data/focusPoints.ts` (keep it in sync with `Resume.tsx`'s entries) |
 | Lights / DoF / Bloom / background gradient / character position | **Plain constants** at the top of each component in `src/scene/Scene.tsx` — edit the values directly, no panel and no extra config file |
-| The character model | `public/models/me.glb`, see [Swapping the character model](#swapping-the-character-model) |
+| The character model | `public/models/lex.glb`, see [Swapping the character model](#swapping-the-character-model) |
 
 Work details use minimal markdown: one `.md` per work, linked via the `slug` on each item in `works.ts`; a work with no matching `.md` falls back to the shared placeholder detail.
 
@@ -96,7 +96,7 @@ Work details use minimal markdown: one `.md` per work, linked via the `slug` on 
 
 ## Swapping the Character Model
 
-To use your own character, replace `public/models/me.glb` (its source is [`blender/sen.blend`](blender) at the repo root — edit it in Blender and export a glb over it), or rewrite `src/scene/Scene.tsx` with your own scene. The code looks these up in the glb **by object name**; whatever is missing, that feature breaks:
+To use your own character, replace `public/models/lex.glb` (its source is [`blender/lex.blend`](blender) at the repo root — edit it in Blender and export a glb over it), or rewrite `src/scene/Scene.tsx` with your own scene. The code looks these up in the glb **by object name**; whatever is missing, that feature breaks:
 
 | The glb needs | What it does | If it's missing |
 | --- | --- | --- |
@@ -110,7 +110,7 @@ To use your own character, replace `public/models/me.glb` (its source is [`blend
 
 A pure front-end SPA, no backend and no router: `index.html` → `src/main.tsx` → `src/App.tsx` (one fixed `<Canvas>` 3D background + a scrollable HTML overlay).
 
-- **3D background**: `src/scene/Scene.tsx` loads `public/models/me.glb` and, using the glb's own camera animation, wipes through it in 5 scroll-driven segments, layering auto-focus depth-of-field and eye-follows-cursor on top. Lighting comes from `src/scene/Env.tsx` (`public/textures/env.hdr` as IBL).
+- **3D background**: `src/scene/Scene.tsx` loads `public/models/lex.glb` and, using the glb's own camera animation, wipes through it in 5 scroll-driven segments, layering auto-focus depth-of-field and eye-follows-cursor on top. Lighting comes from `src/scene/Env.tsx` (`public/textures/env.hdr` as IBL).
 - **Scroll content**: `Hero` (About, inside `App.tsx`) → `src/ui/Resume.tsx` (résumé timeline) → `src/ui/Works.tsx` (works gallery + detail modal).
 - **Overlays**: `LoadingScreen` (masks the screen until the model loads), `NoiseOverlay` (film grain), scroll-darken / frosted right rail / hero decorative frame (all in `App.tsx`).
 - **Post-processing**: the `<EffectComposer>` order is DepthOfField → Bloom → SMAA; mind the order when changing effects, it affects compositing.

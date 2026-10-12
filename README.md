@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="https://lexppp.github.io/Lex-3d-resume/"><img src="docs/preview.jpg" alt="3D 简历首屏：滚动驱动的人物模型 + 前景 About 文案" width="800"></a>
+  <a href="https://lexppp.github.io/Lex-3d-resume/"><img src="docs/lex-preview.png" alt="3D 简历首屏：滚动驱动的人物模型 + 前景 About 文案" width="800"></a>
 </p>
 
 一个基于 **React Three Fiber + TypeScript** 的滚动式个人 3D 简历：一层固定的 3D 背景（会随滚动运镜的人物模型）+ 一层可滚动的 HTML 内容（About → 履历 → 作品集）。相机路径直接复用 glb 里烘好的动画，滚动条只是「刮」时间轴，再叠上自动对焦景深和眼球跟随光标。纯前端 SPA，`npm run build` 出来就是一个静态 `dist/`，扔哪都能跑。
@@ -45,8 +45,8 @@
 前端应用整个在 [`web/`](web) 下，**下文提到的代码 / 资源路径都相对 `web/`**（如 `src/App.tsx` 即 `web/src/App.tsx`），npm 命令也在 `web/` 里执行。
 
 ```bash
-git clone https://github.com/dayinji/sen-3d-resume.git
-cd sen-3d-resume/web
+git clone https://github.com/lexppp/Lex-3d-resume.git
+cd Lex-3d-resume/web
 npm install
 npm run dev        # 开发 http://localhost:5173
 ```
@@ -96,7 +96,7 @@ npm run lint       # ESLint
 
 ## 换人物模型
 
-想换成你自己的人物，替换 `public/models/lex.glb`（源文件是仓库根的 [`blender/sen.blend`](blender)，在 Blender 里改完导出 glb 覆盖它），或改写 `src/scene/Scene.tsx` 用你自己的场景。代码按**对象名字**在 glb 里查找以下内容，缺哪个对应功能就失效：
+想换成你自己的人物，替换 `public/models/lex.glb`（源文件是仓库根的 [`blender/lex.blend`](blender)，在 Blender 里改完导出 glb 覆盖它），或改写 `src/scene/Scene.tsx` 用你自己的场景。代码按**对象名字**在 glb 里查找以下内容，缺哪个对应功能就失效：
 
 | glb 里要有 | 作用 | 缺了会怎样 |
 | --- | --- | --- |
