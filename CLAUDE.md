@@ -10,7 +10,7 @@ The repo has three parts:
 - **[`blender/`](blender)** — the 3D scene source `sen.blend` (character + camera animation + focus-anchor empties). The source you edit before exporting the glb.
 - **[`tutor/`](tutor)** — fork-it-yourself tutorials for users (deployment, stickers, …; more coming).
 
-**Every code / asset path below is relative to `web/`** (e.g. `src/App.tsx` means `web/src/App.tsx`), and npm commands run inside `web/`; docs like `LICENSE` / `NOTICE` / `CLAUDE.md` sit at the repo root.
+**Every code / asset path below is relative to `web/`** (e.g. `src/App.tsx` means `web/src/App.tsx`), and npm commands run inside `web/`; collaboration docs like `CLAUDE.md` sit at the repo root.
 
 ## Commands
 
@@ -66,4 +66,3 @@ Every tunable in the scene (lights, camera, depth-of-field, Bloom, character pos
   - (Note: wind sway was removed, so a mesh named `man` is no longer needed.)
   - **Camera frame convention** (for authoring the `CameraAction` clip): frame `0` = hero (`focus-start`); frame `50·k` = the k-th timeline node; the **last frame** = works (`focus-works`). So each node is 50 frames apart, and the tail from the last node to the last frame is the works segment (any length).
 - Edit the résumé in `src/ui/Resume.tsx`; works in `src/data/works.ts` + `src/content/works/*.md`; About in `App.tsx`'s `COPY`.
-- Personal content / assets / the character model are copyright of the original author and **not covered by MIT** (see `NOTICE`) — after forking, be sure to replace them with your own.

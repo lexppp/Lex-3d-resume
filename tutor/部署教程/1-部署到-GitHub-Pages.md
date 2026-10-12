@@ -92,5 +92,5 @@ GitHub Pages 也支持自定义域名（Settings → Pages → Custom domain）�
 
 ## 下一步
 
-- 想换成自己的内容（姓名 / 模型 / 简历 / 作品）？看仓库根目录的 [`README.md`](../../README.md) 里「改造」相关章节，以及 [`NOTICE`](../../NOTICE)（原作者的个人素材不在开源范围内，记得替换）。
+- 想换成自己的内容（姓名 / 模型 / 简历 / 作品）？看仓库根目录的 [`README.md`](../../README.md) 里「改成你自己的」章节。
 - 想用 Cloudflare 部署 / 绑定自定义域名？→ [《② 部署到 Cloudflare Pages》](2-部署到-Cloudflare-Pages.md)

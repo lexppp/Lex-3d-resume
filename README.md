@@ -1,7 +1,6 @@
 <h1 align="center">Lex-3d-简历</h1>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue.svg?style=flat" alt="License MIT"></a>
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react&logoColor=white" alt="React 18">
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript 5">
   <img src="https://img.shields.io/badge/three.js-r169-000000?style=flat&logo=three.js&logoColor=white" alt="three.js r169">
@@ -27,10 +26,6 @@
 </p>
 
 一个基于 **React Three Fiber + TypeScript** 的滚动式个人 3D 简历：一层固定的 3D 背景（会随滚动运镜的人物模型）+ 一层可滚动的 HTML 内容（About → 履历 → 作品集）。相机路径直接复用 glb 里烘好的动画，滚动条只是「刮」时间轴，再叠上自动对焦景深和眼球跟随光标。纯前端 SPA，`npm run build` 出来就是一个静态 `dist/`，扔哪都能跑。
-
-> **开源说明（先读这段）**
-> **代码**采用 **MIT** 许可证（见 [`LICENSE`](LICENSE)），欢迎学习、复用、二次开发。
-> **个人内容与素材**（姓名 / 人物模型 / 简历 / 作品文案 / 品牌 logo / 社交链接）**不在 MIT 范围内**，版权归作者所有——fork 后请替换成你自己的，详见 [`NOTICE`](NOTICE)。
 
 ## 快速开始
 
@@ -91,7 +86,7 @@ npm run lint       # ESLint
 
 - **作品详情默认是占位。** 开源版本不含作者的作品详情与媒体：画廊保留各板块 / 作品**标题**，点开详情统一显示占位文案（改 `works.ts` 的 `detailPlaceholder / phImageLabel / phButtonLabel`）。想填充某个作品，写一个 `src/content/works/<slug>.md` 即可自动渲染成完整详情。
 - **`public/works/` 默认不入 git**（体积大且属个人内容，见 `.gitignore`）——仅保留 4 张板块封面图 `public/works/covers/*.jpg`；其余媒体请自行放置或走 CDN，用 `/works/...` 绝对路径引用。
-- `public/models/`、`public/images/`、`public/textures/`、`public/fonts/` 里的素材已入库。其中人物模型、品牌 logo、图片属于个人内容（见 [`NOTICE`](NOTICE)）；字体 / HDR 为第三方素材，复用前请各自核对许可。
+- `public/models/`、`public/images/`、`public/textures/`、`public/fonts/` 里的素材已入库。
 - `scripts/compress-media.sh` 用 ffmpeg 原地压缩 `public` 下的图 / 视频（最大宽 1920，视频 H.264 ~2Mbps），仅当压得更小才覆盖。
 
 ## 换人物模型
@@ -142,7 +137,6 @@ export const FRAMES_PER_NODE = 50
 | [`tutor/`](tutor) | 面向使用者的改造教程（部署、贴纸、眼球、intro3d 导模型） |
 | [`docs/`](docs) | README 用到的预览图 |
 | [`CLAUDE.md`](CLAUDE.md) [`AGENTS.md`](AGENTS.md) | 面向 AI 编码助手的协作约定 |
-| [`LICENSE`](LICENSE) [`NOTICE`](NOTICE) | 许可与内容声明 |
 
 `web/` 内部：
 
@@ -201,7 +195,6 @@ npm run build    # → dist/
 | 眼球跟随光标 | ✅ | ❌ |
 | 3D 模型 | 自己在 Blender 做或 intro3d 导出 | 平台内可视化处理 |
 | 部署 | 自己传 `dist/` 到任意静态托管 | 一站式托管 |
-| 许可 | 代码 MIT（个人内容除外，见 `NOTICE`） | 平台服务条款 |
 
 ## 为什么用它
 
@@ -216,12 +209,6 @@ npm run build    # → dist/
 
 React 18 · TypeScript · @react-three/fiber · @react-three/drei · @react-three/postprocessing · three · framer-motion · zustand · Vite
 
-## 许可与版权
-
-- **代码**：[MIT](LICENSE)。
-- **个人内容与素材**：© Sen Zheng（SEN），保留所有权利，**不在 MIT 范围内**，详见 [`NOTICE`](NOTICE)。fork 后请替换成你自己的姓名、模型、简历、作品与 logo。
-- **第三方素材**（字体 / HDR）：请各自核对其原始许可后再分发。
-
 ## Lex 人物模型（2026-10-13）
 
 这是按照照片特征制作的风格化 3D 人物，包含黑色偏分头发、细框眼镜、衬衫领带和耳饰。模型在 Blender 中制作，10 张贴纸从透明的 16 宫格图集里随机选取，贴在额头和双颊；位置、角度和图案由固定随机种子记录，加载页面时不会闪动。
@@ -232,4 +219,4 @@ React 18 · TypeScript · @react-three/fiber · @react-three/drei · @react-thre
 - 贴纸分布：blender/lex-sticker-layout.json
 - 重新生成：使用 Blender 4.5 运行 blender/create_lex.py，-- 后传入项目根目录。
 
-保留 CameraAction（24 fps）和 focus-0、focus-1…5、focus-works；独立 eye_Lex_* 对象支持眼球跟随。原始参考照片没有包含在网页资源中。其他履历和作品仍沿用模板占位内容，后续可替换。原作者版权声明保留在 LICENSE 和 NOTICE。
+保留 CameraAction（24 fps）和 focus-0、focus-1…5、focus-works；独立 eye_Lex_* 对象支持眼球跟随。原始参考照片没有包含在网页资源中。其他履历和作品仍沿用模板占位内容，后续可替换。

@@ -1,7 +1,6 @@
 <h1 align="center">Lex · 3D Personal Résumé</h1>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue.svg?style=flat" alt="License MIT"></a>
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react&logoColor=white" alt="React 18">
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript 5">
   <img src="https://img.shields.io/badge/three.js-r169-000000?style=flat&logo=three.js&logoColor=white" alt="three.js r169">
@@ -27,10 +26,6 @@
 </p>
 
 A scroll-driven personal 3D résumé built on **React Three Fiber + TypeScript**: one fixed 3D background (a character model that reacts to scroll) plus scrollable HTML content in front (About → résumé → works). The camera path is the animation baked into the glb — the scrollbar just wipes through its timeline — with auto-focus depth-of-field and eye-follows-cursor layered on top. It's a pure front-end SPA: `npm run build` gives you a static `dist/` that runs anywhere.
-
-> **Open-source terms (read this first)**
-> The **code** is under the **MIT** license (see [`LICENSE`](LICENSE)) — you're welcome to study, reuse, and build on it.
-> The **personal content and assets** (name / character model / résumé / works copy / brand logos / social links) are **not covered by MIT** and remain the author's copyright — replace them with your own after forking, see [`NOTICE`](NOTICE).
 
 ## Quick Start
 
@@ -91,7 +86,7 @@ Work details use minimal markdown: one `.md` per work, linked via the `slug` on 
 
 - **Work details are placeholders by default.** The open-source version ships without the author's work details or media: the gallery keeps each section / work **title**, and opening a detail shows a shared placeholder (change `detailPlaceholder / phImageLabel / phButtonLabel` in `works.ts`). To fill one in, write a `src/content/works/<slug>.md` and it renders as a full detail.
 - **`public/works/` is not tracked by git by default** (large and personal, see `.gitignore`) — only the 4 section covers `public/works/covers/*.jpg` are kept; place other media yourself or serve it from a CDN, referenced with `/works/...` absolute paths.
-- Assets in `public/models/`, `public/images/`, `public/textures/`, `public/fonts/` are tracked. Among them the character model, brand logos, and images are personal content (see [`NOTICE`](NOTICE)); fonts / HDR are third-party — check their licenses before reuse.
+- Assets in `public/models/`, `public/images/`, `public/textures/`, and `public/fonts/` are tracked.
 - `scripts/compress-media.sh` uses ffmpeg to compress images / videos under `public` in place (max width 1920, H.264 video ~2Mbps), overwriting only when the result is smaller.
 
 ## Swapping the Character Model
@@ -142,7 +137,6 @@ To add or remove a résumé entry, change `FOCUS_POINTS` + `Resume.tsx`'s entrie
 | [`tutor/`](tutor) | Fork-it-yourself tutorials (deploy, stickers, eyes, intro3d model export) |
 | [`docs/`](docs) | The preview image used by this README |
 | [`CLAUDE.md`](CLAUDE.md) [`AGENTS.md`](AGENTS.md) | Conventions for AI coding assistants |
-| [`LICENSE`](LICENSE) [`NOTICE`](NOTICE) | License & content notice |
 
 Inside `web/`:
 
@@ -201,7 +195,6 @@ This project and [intro3d.com](https://intro3d.com) are two ends of the same ide
 | Eye-follows-cursor | ✅ | ❌ |
 | 3D model | Make it in Blender or export from intro3d | Handled visually in the platform |
 | Deployment | Upload `dist/` to any static host yourself | Hosted for you |
-| License | Code MIT (personal content excluded, see `NOTICE`) | Platform terms of service |
 
 ## Why This Project?
 
@@ -215,9 +208,3 @@ This project and [intro3d.com](https://intro3d.com) are two ends of the same ide
 ## Tech Stack
 
 React 18 · TypeScript · @react-three/fiber · @react-three/drei · @react-three/postprocessing · three · framer-motion · zustand · Vite
-
-## License & Copyright
-
-- **Code:** [MIT](LICENSE).
-- **Personal content and assets:** © Sen Zheng (SEN), all rights reserved, **not covered by MIT** — see [`NOTICE`](NOTICE). After forking, replace the name, model, résumé, works, and logos with your own.
-- **Third-party assets** (fonts / HDR): check their original licenses before redistributing.
